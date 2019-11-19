@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 
 @Component({
   selector: 'tm-home',
@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor() {}
+  @Input() owner = 'me'
+  @Output() timePassed = new EventEmitter<number>()
+
+  constructor() {
+    setInterval(() => this.timePassed.emit(+new Date()), 2000)
+  }
 
   ngOnInit() {}
 }

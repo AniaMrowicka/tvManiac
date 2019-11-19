@@ -1,16 +1,21 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">TV maniac</a>
+  <a class="navbar-brand" routerLink="/">TV maniac</a>
   <div class="container">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home </a>
-        <a class="nav-item nav-link" href="#">Search</a>
-        <a class="nav-item nav-link" href="#">Contact</a>
+        <a
+          class="nav-item nav-link"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLink="/"
+          >Home
+        </a>
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/tv">Search</a>
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="/contact">Contact</a>
       </div>
     </div>
   </div>
 </nav>
 <main class="container">
-  <tm-home></tm-home>
   <router-outlet></router-outlet>
 </main>
