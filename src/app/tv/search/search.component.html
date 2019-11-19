@@ -1,1 +1,15 @@
-<p>search works!</p>
+<div class="row">
+  <section class="col col-3">
+    <h2 class="h3">Bookmarks</h2>
+  </section>
+  <section class="col">
+    <h1 class="h3">Search</h1>
+    <div class="input-group">
+      <input type="search" class="form-control" />
+      <div class="input-group-append">
+        <button class="btn btn-primary">Search</button>
+      </div>
+    </div>
+    <img *ngFor="let show of shows" [src]="show.image.medium" alt="" />
+  </section>
+</div>

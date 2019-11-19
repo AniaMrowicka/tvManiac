@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Show, ShowResponse } from '../tv.models'
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'tm-search',
@@ -6,7 +9,15 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  constructor() {}
+  shows: Show[] = []
+
+  constructor(http: HttpClient) {
+    const url = 'https://api.tvmaze.com/search/shows?q=avengers'
+    http
+      .get<ShowResponse[]>(url)
+      .pipe(map(showsResponses => showsResponses.map(({ show }) => show)))
+      .subscribe(shows => (this.shows = shows))
+  }
 
   ngOnInit() {}
 }
