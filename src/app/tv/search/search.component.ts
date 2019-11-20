@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
-import { Show, ShowResponse } from '../tv.models'
-import { map } from 'rxjs/operators'
+import { Show } from '../tv.models'
+import { TvMazeService } from '../tv-maze.service'
 
 @Component({
   selector: 'tm-search',
@@ -10,16 +10,15 @@ import { map } from 'rxjs/operators'
 })
 export class SearchComponent implements OnInit {
   shows: Show[] = []
+  query = 'batman'
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tv: TvMazeService) {
+    this.search('batman')
+  }
 
   ngOnInit() {}
 
-  search(queryRef: string) {
-    const url = `https://api.tvmaze.com/search/shows?q=${queryRef}`
-    this.http
-      .get<ShowResponse[]>(url)
-      .pipe(map(showsResponses => showsResponses.map(({ show }) => show)))
-      .subscribe(shows => (this.shows = shows))
+  search(query: string) {
+    this.tv.searchShows(query).subscribe(shows => (this.shows = shows))
   }
 }
