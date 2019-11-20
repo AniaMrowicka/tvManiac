@@ -1,0 +1,7 @@
+<div class="row">
+  <tm-poster class="col col-3" [show]="showDetails"></tm-poster>
+  <div class="col">
+    <h1>{{ showDetails.name }}</h1>
+    <div [innerHTML]="showDetails.summary"></div>
+  </div>
+</div>
