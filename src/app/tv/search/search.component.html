@@ -5,7 +5,13 @@
   <section class="col">
     <h1 class="h3">Search</h1>
     <form class="input-group">
-      <input type="search" name="query" [(ngModel)]="query" class="form-control" />
+      <input
+        title="Show name"
+        type="search"
+        name="query"
+        [(ngModel)]="query"
+        class="form-control"
+      />
       <div class="input-group-append">
         <button [disabled]="!query" class="btn btn-primary" (click)="search(query)">Search</button>
       </div>
