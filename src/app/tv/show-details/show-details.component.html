@@ -3,5 +3,21 @@
   <div class="col">
     <h1>{{ showDetails.name }}</h1>
     <div [innerHTML]="showDetails.summary"></div>
+    <table class="table table-sm">
+      <thead>
+        <tr>
+          <th>Episode</th>
+          <th>Title</th>
+          <th>Air Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let episode of showDetails._embedded.episodes">
+          <td>{{ episode | episodize }}</td>
+          <td>{{ episode.name }}</td>
+          <td>{{ episode.airdate }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -25,7 +25,9 @@ export interface Show {
   updated: number
   _links: Links
 }
-
+export interface ShowDetails extends Show {
+  _embedded: Embedded
+}
 export interface Schedule {
   time: string
   days: string[]
@@ -75,4 +77,22 @@ export interface Self {
 
 export interface Previousepisode {
   href: string
+}
+export interface Embedded {
+  episodes: Episode[]
+}
+
+export interface Episode {
+  id: number
+  url: string
+  name: string
+  season: number
+  number: number
+  airdate: string
+  airtime: string
+  airstamp: string
+  runtime: number
+  image?: Image
+  summary: string
+  _links: Links
 }

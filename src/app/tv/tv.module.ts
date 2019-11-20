@@ -6,9 +6,10 @@ import { PosterComponent } from './poster/poster.component'
 import { FormsModule } from '@angular/forms'
 import { ShowDetailsComponent } from './show-details/show-details.component'
 import { RouterModule } from '@angular/router'
+import { EpisodizePipe } from './episodize.pipe'
 
 @NgModule({
-  declarations: [SearchComponent, PosterComponent, ShowDetailsComponent],
+  declarations: [SearchComponent, PosterComponent, ShowDetailsComponent, EpisodizePipe],
   imports: [CommonModule, HttpClientModule, FormsModule, RouterModule],
 })
 export class TvModule {}

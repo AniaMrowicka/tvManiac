@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Show } from '../tv.models'
+import { Show, ShowDetails } from '../tv.models'
 
 @Component({
   selector: 'tm-show-details',
@@ -8,7 +8,7 @@ import { Show } from '../tv.models'
   styleUrls: ['./show-details.component.scss'],
 })
 export class ShowDetailsComponent {
-  showDetails: Show
+  showDetails: ShowDetails
   constructor(private route: ActivatedRoute) {
     // this.route.params.subscribe((params: ShowDetailsParam) => params.showId)
     this.showDetails = this.route.snapshot.data.show
