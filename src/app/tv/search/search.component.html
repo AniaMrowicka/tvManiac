@@ -5,11 +5,13 @@
   <section class="col">
     <h1 class="h3">Search</h1>
     <div class="input-group">
-      <input type="search" class="form-control" />
+      <input type="search" class="form-control" #queryRef />
       <div class="input-group-append">
-        <button class="btn btn-primary">Search</button>
+        <button class="btn btn-primary" (click)="search(queryRef.value)">Search</button>
       </div>
     </div>
-    <img *ngFor="let show of shows" [src]="show.image.medium" alt="" />
+    <div class="row">
+      <tm-poster class="col col-4" [show]="show" *ngFor="let show of shows"></tm-poster>
+    </div>
   </section>
 </div>

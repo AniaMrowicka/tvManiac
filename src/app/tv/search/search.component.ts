@@ -11,13 +11,15 @@ import { map } from 'rxjs/operators'
 export class SearchComponent implements OnInit {
   shows: Show[] = []
 
-  constructor(http: HttpClient) {
-    const url = 'https://api.tvmaze.com/search/shows?q=avengers'
-    http
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {}
+
+  search(queryRef: string) {
+    const url = `https://api.tvmaze.com/search/shows?q=${queryRef}`
+    this.http
       .get<ShowResponse[]>(url)
       .pipe(map(showsResponses => showsResponses.map(({ show }) => show)))
       .subscribe(shows => (this.shows = shows))
   }
-
-  ngOnInit() {}
 }
