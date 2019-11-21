@@ -1,6 +1,9 @@
 <div class="row">
   <section class="col col-3">
     <h2 class="h3">Bookmarks</h2>
+    <div class="row">
+      <tm-poster class="col col-6" [show]="show" *ngFor="let show of allBookmarks"> </tm-poster>
+    </div>
   </section>
   <section class="col">
     <h1 class="h3">Search</h1>
@@ -17,7 +20,9 @@
       </div>
     </form>
     <div class="row">
-      <tm-poster class="col col-4" [show]="show" *ngFor="let show of shows"></tm-poster>
+      <tm-poster class="col col-4" [show]="show" *ngFor="let show of shows">
+        <button class="btn btn-primary btn-sm" (click)="saveBookmark(show)">+</button></tm-poster
+      >
     </div>
   </section>
 </div>

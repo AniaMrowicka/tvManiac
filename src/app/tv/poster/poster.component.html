@@ -1,5 +1,6 @@
 <ng-container *ngIf="show">
   <img [src]="imgUrl" class="img-fluid" alt="" />
+  <ng-content></ng-content>
   <h2 class="h3">
     <a routerLink="/tv/{{ show.id }}"> {{ show.name }}</a>
   </h2>
