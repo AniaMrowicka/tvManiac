@@ -2,7 +2,8 @@
   <section class="col col-3">
     <h2 class="h3">Bookmarks</h2>
     <div class="row">
-      <tm-poster class="col col-6" [show]="show" *ngFor="let show of allBookmarks"> </tm-poster>
+      <tm-poster class="col col-6" [show]="show" *ngFor="let show of bookMarks$ | async">
+      </tm-poster>
     </div>
   </section>
   <section class="col">

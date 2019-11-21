@@ -1,27 +1,31 @@
 import { Injectable } from '@angular/core'
 import { Bookmark, BookmarkId } from './bookmarks.models'
+import { BehaviorSubject } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookmarksService {
-  private items: ReadonlyArray<Bookmark> = []
+  private items: Bookmark[] = []
+  // tslint:disable-next-line:variable-name
+  private _items$ = new BehaviorSubject<Bookmark[]>([])
+  items$ = this._items$.asObservable()
 
   constructor() {}
 
-  getAll(): Bookmark[] {
-    return [...this.items]
-  }
-
   add(item: Bookmark): void {
-    this.items = [...this.items, item]
+    this.update([...this.items, item])
   }
 
   remove(id: BookmarkId): void {
-    this.items = this.items.filter(item => item.id !== id)
+    this.update(this.items.filter(item => item.id !== id))
   }
 
   has(id: BookmarkId): boolean {
     return this.items.some(item => item.id === id)
+  }
+  private update(item: Bookmark[]) {
+    this.items = item
+    this._items$.next(item)
   }
 }

@@ -9,8 +9,9 @@ import { BookmarksService } from '../../bookmarks/bookmarks.service'
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
   shows: Show[] = []
+  bookMarks$ = this.bookmarkService.items$
   query = 'batman'
 
   constructor(
@@ -19,16 +20,10 @@ export class SearchComponent implements OnInit {
     private bookmarkService: BookmarksService,
   ) {
     this.search('batman')
+    // this.bookmarkService.items$.subscribe(data => (this.bookMarks = data as Show[]))
   }
-
-  ngOnInit() {}
 
   search(query: string) {
     this.tv.searchShows(query).subscribe(shows => (this.shows = shows))
-  }
-
-  get allBookmarks(): Show[] {
-    console.count()
-    return this.bookmarkService.getAll() as Show[]
   }
 }
