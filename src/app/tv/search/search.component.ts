@@ -17,7 +17,7 @@ export class SearchComponent {
   constructor(
     private http: HttpClient,
     private tv: TvMazeService,
-    private bookmarkService: BookmarksService,
+    private bookmarkService: BookmarksService<Show>,
   ) {
     this.search('batman')
     // this.bookmarkService.items$.subscribe(data => (this.bookMarks = data as Show[]))

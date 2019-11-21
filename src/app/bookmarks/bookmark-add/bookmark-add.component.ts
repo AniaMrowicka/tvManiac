@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { Show } from '../../tv/tv.models'
 import { BookmarksService } from '../bookmarks.service'
+import { Bookmark } from '../bookmarks.models'
 
 @Component({
   selector: 'tm-bookmark-add',
@@ -8,7 +9,7 @@ import { BookmarksService } from '../bookmarks.service'
   styleUrls: ['./bookmark-add.component.scss'],
 })
 export class BookmarkAddComponent implements OnInit {
-  @Input() item: Show
+  @Input() item: Bookmark
   constructor(private bookmarkService: BookmarksService) {}
 
   ngOnInit() {}

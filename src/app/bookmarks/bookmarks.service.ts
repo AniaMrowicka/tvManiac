@@ -8,10 +8,10 @@ import { map } from 'rxjs/operators'
 @Injectable({
   providedIn: 'root',
 })
-export class BookmarksService {
-  private items: Bookmark[] = []
+export class BookmarksService<T extends Bookmark = Bookmark> {
+  private items: T[] = []
   // tslint:disable-next-line:variable-name
-  private _items$ = new BehaviorSubject<Bookmark[]>([])
+  private _items$ = new BehaviorSubject<T[]>([])
   items$ = this._items$.asObservable()
   private readonly url = 'http://localhost:3000/bookmarks'
 
@@ -19,7 +19,7 @@ export class BookmarksService {
     this.http.get(this.url).subscribe(bookmarks => this.update)
   }
 
-  add(item: Bookmark): void {
+  add(item: T): void {
     this.http
       .post(this.url, item)
       .pipe(map(() => [...this.items, item]))
@@ -36,7 +36,7 @@ export class BookmarksService {
   has(id: BookmarkId): boolean {
     return this.items.some(item => item.id === id)
   }
-  private update = (item: Bookmark[]) => {
+  private update = (item: T[]) => {
     this.items = item
     this._items$.next(item)
   }
