@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component'
 import { ShowDetailsComponent } from './tv/show-details/show-details.component'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { ShowDetailsResolver } from './tv/show-details/show-details.resolver'
+import { LoggedInGuard } from './shared/logged-in.guard'
 export interface ShowDetailsParam {
   showId: string
 }
@@ -18,6 +19,10 @@ const routes: Routes = [
     resolve: {
       show: ShowDetailsResolver,
     },
+    data: {
+      roles: ['admin', 'edytor'],
+    },
+    canActivate: [LoggedInGuard],
   },
   { path: 'contact', component: ContactComponent },
   { path: '**', component: NotFoundComponent },
