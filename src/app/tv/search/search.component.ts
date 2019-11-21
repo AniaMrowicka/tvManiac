@@ -27,6 +27,7 @@ export class SearchComponent {
     this.searchForm = this.fb.group({
       query,
     })
+    this.searchForm.valueChanges.subscribe(v => v.query)
   }
 
   search(query: string) {

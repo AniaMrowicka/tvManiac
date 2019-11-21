@@ -17,7 +17,20 @@
         class="form-control"
       />
       <div class="input-group-append">
-        <button [disabled]="!query" class="btn btn-primary" (click)="search(query)">Search</button>
+        <button
+          [disabled]="!query"
+          class="btn btn-primary"
+          (click)="search(searchForm.value.query)"
+        >
+          Search
+        </button>
+        <button
+          [disabled]="!query"
+          class="btn btn-primary"
+          (click)="search(searchForm.value.query)"
+        >
+          Search
+        </button>
       </div>
     </form>
     <div class="row">
