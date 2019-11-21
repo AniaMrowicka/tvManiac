@@ -9,6 +9,9 @@ import { Show, ShowDetails } from '../tv.models'
 })
 export class ShowDetailsComponent {
   showDetails: ShowDetails
+  isUpperCase = false
+  dateFormat = 'dd.MM.yyyy'
+
   constructor(private route: ActivatedRoute) {
     // this.route.params.subscribe((params: ShowDetailsParam) => params.showId)
     this.showDetails = this.route.snapshot.data.show
