@@ -27,9 +27,6 @@ export class SearchComponent implements OnInit {
     this.tv.searchShows(query).subscribe(shows => (this.shows = shows))
   }
 
-  saveBookmark(show: Show) {
-    this.bookmarkService.add(show)
-  }
   get allBookmarks(): Show[] {
     console.count()
     return this.bookmarkService.getAll() as Show[]

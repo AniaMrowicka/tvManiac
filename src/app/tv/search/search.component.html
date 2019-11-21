@@ -21,8 +21,9 @@
     </form>
     <div class="row">
       <tm-poster class="col col-4" [show]="show" *ngFor="let show of shows">
-        <button class="btn btn-primary btn-sm" (click)="saveBookmark(show)">+</button></tm-poster
-      >
+        <tm-bookmark-add [item]="show"></tm-bookmark-add>
+        <tm-bookmark-remove [item]="show"></tm-bookmark-remove>
+      </tm-poster>
     </div>
   </section>
 </div>
