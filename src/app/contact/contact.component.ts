@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core'
+import { AbstractControl, NgModel } from '@angular/forms'
 
 @Component({
   selector: 'tm-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss'],
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
+  contact = {
+    email: '',
+    message: '',
+  }
   constructor() {}
 
-  ngOnInit() {}
+  hasErrors(control: NgModel): boolean {
+    return (control.dirty || control.touched) && control.invalid
+  }
 }

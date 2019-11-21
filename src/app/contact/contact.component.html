@@ -1,1 +1,49 @@
-<p>contact works!</p>
+<div class="row">
+  <form #formRef="ngForm" class="col col-sm-6 offset-sm-3">
+    <h1 class="h3">Contact us</h1>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        [(ngModel)]="contact.email"
+        required
+        minlength="3"
+        email
+        #emailRef="ngModel"
+        id="email"
+        type="email"
+        name="email"
+        class="form-control is-invalid"
+        [class.is-invalid]="hasErrors(emailRef)"
+      />
+      <div class="invalid-feedback" *ngIf="hasErrors(emailRef)">
+        <div *ngIf="emailRef.errors.required">
+          This is required
+        </div>
+        <div *ngIf="emailRef.errors.email">
+          This should be a email
+        </div>
+        <div *ngIf="emailRef.errors.minlength">
+          This should be longer
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea
+        [(ngModel)]="contact.message"
+        minlength="5"
+        #messageRef="ngModel"
+        id="message"
+        class="form-control is-invalid"
+        name="'message"
+        [class.is-invalid]="hasErrors(messageRef)"
+      ></textarea>
+      <div class="invalid-feedback" *ngIf="hasErrors(messageRef)">
+        <div *ngIf="messageRef.errors.minlength">This should be longer</div>
+      </div>
+    </div>
+    <button class="btn btn-primary float-right" [disabled]="formRef.invalid">
+      Send
+    </button>
+  </form>
+</div>

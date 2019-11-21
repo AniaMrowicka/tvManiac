@@ -20,7 +20,7 @@ const routes: Routes = [
       show: ShowDetailsResolver,
     },
     data: {
-      roles: ['admin', 'edytor'],
+      roles: ['admin', 'editor'],
     },
     canActivate: [LoggedInGuard],
   },
@@ -29,7 +29,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
