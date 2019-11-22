@@ -8,3 +8,8 @@ export const bookmarkRemoveSuccess = createAction(
   'bookmarks/REMOVE_SUCCESS',
   props<{ id: BookmarkId }>(),
 )
+export const bookmarksFetch = createAction('bookmarks/FETCH')
+export const bookmarksFetchSuccess = createAction(
+  'bookmarks/FETCH_SUCCESS',
+  props<{ items: Bookmark[] }>(),
+)

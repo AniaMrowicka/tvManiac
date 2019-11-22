@@ -3,21 +3,24 @@ import { createReducer, on } from '@ngrx/store'
 import * as BookmarksActions from '../actions/bookmarks.actions'
 
 export interface State {
-  item: Bookmark[]
+  items: Bookmark[]
   pending: boolean
 }
 
 export const initialState: State = {
-  item: [],
+  items: [],
   pending: false,
 }
 
 export const bookmarks = createReducer(
   initialState,
   on(BookmarksActions.bookmarkAddSuccess, (state, action) => {
-    return { ...state, items: [...state.item, action.item] }
+    return { ...state, items: [...state.items, action.item] }
   }),
   on(BookmarksActions.bookmarkRemoveSuccess, (state, action) => {
-    return { ...state, items: state.item.filter(item => item.id !== action.id) }
+    return { ...state, items: state.items.filter(item => item.id !== action.id) }
+  }),
+  on(BookmarksActions.bookmarksFetchSuccess, (state, action) => {
+    return { ...state, items: action.items }
   }),
 )
