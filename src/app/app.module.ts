@@ -9,10 +9,25 @@ import { TvModule } from './tv/tv.module'
 import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { SharedModule } from './shared/shared.module'
 import { FormsModule } from '@angular/forms'
+import { StoreModule } from '@ngrx/store'
+import { reducers, metaReducers } from './reducers'
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ContactComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, TvModule, SharedModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    TvModule,
+    SharedModule,
+    FormsModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true,
+      },
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
