@@ -10,7 +10,12 @@ import { NotFoundComponent } from './pages/not-found/not-found.component'
 import { SharedModule } from './shared/shared.module'
 import { FormsModule } from '@angular/forms'
 import { StoreModule } from '@ngrx/store'
-import { reducers, metaReducers } from './reducers'
+import { reducers, metaReducers } from './store/reducers'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { environment } from '../environments/environment'
+import { EffectsModule } from '@ngrx/effects'
+import { AppEffects } from './app.effects'
+import { BookmarksEffects } from './store/effects/bookmarks.effects'
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ContactComponent, NotFoundComponent],
@@ -27,6 +32,8 @@ import { reducers, metaReducers } from './reducers'
         strictActionImmutability: true,
       },
     }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([AppEffects, BookmarksEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
