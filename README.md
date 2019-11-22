@@ -222,3 +222,4 @@ plugin do webstorma material theme UI
 
 2. co akcja zrobila jaki miala skutek
 3. podlaczenie do uslugi
+   https://bitbucket.org/tomsu/tv-maniac-2019-11-20/src/7f1d6fe80c04d549e50dea1955b5b9e3e3108bac/src/styles.scss
