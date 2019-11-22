@@ -3,6 +3,7 @@
     <h2 class="h3">Bookmarks</h2>
     <div class="row">
       <tm-poster class="col col-6" [show]="show" *ngFor="let show of bookMarks$ | async">
+        <tm-bookmark-remove [item]="show"></tm-bookmark-remove>
       </tm-poster>
     </div>
   </section>
@@ -15,15 +16,9 @@
         type="search"
         name="query"
         class="form-control"
+        [class.is-invalid]="searchForm.controls.query.invalid"
       />
       <div class="input-group-append">
-        <button
-          [disabled]="!query"
-          class="btn btn-primary"
-          (click)="search(searchForm.value.query)"
-        >
-          Search
-        </button>
         <button
           [disabled]="!query"
           class="btn btn-primary"
