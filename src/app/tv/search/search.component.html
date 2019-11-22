@@ -29,7 +29,13 @@
       </div>
     </form>
     <div class="row">
-      <tm-poster class="col col-4" [show]="show" *ngFor="let show of shows">
+      <tm-poster
+        class="col col-4"
+        tmBookmarked
+        [item]="show"
+        [show]="show"
+        *ngFor="let show of shows"
+      >
         <tm-bookmark-add [item]="show"></tm-bookmark-add>
         <tm-bookmark-remove [item]="show"></tm-bookmark-remove>
       </tm-poster>
